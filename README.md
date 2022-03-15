@@ -22,4 +22,4 @@ _To get started you can download a sample file from sqlitetutorial.net [here](ht
 - SQLite
 
 ## Roadmap
-I plan on adding support for more SQL-flavours such as PostgresQL, MySQL and MSSQL in the future.
+I plan on adding support for more SQL-flavours such as MySQL & MSSQL in the future.

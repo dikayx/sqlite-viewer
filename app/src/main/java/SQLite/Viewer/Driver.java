@@ -11,19 +11,20 @@ import java.util.Map;
 public class Driver implements AutoCloseable {
 
     private Connection connection;
+    private static String url;
 
+    // Queries
     public static final String SQL_ALL_ROWS = "SELECT * FROM %s;";
     private static final String SQL_FIND_ALL_TABLES =
             "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
 
     public Driver(String fileName) throws SQLException {
+        setUrl();
         connect(fileName);
     }
 
     // Connect to a selected database
     protected void connect(String fileName) throws SQLException {
-        // SQLite default url
-        String url = "jdbc:sqlite:%s";
         SQLiteDataSource dataSource = new SQLiteDataSource();
         dataSource.setUrl(String.format(url, fileName));
         connection = dataSource.getConnection();
@@ -65,6 +66,11 @@ public class Driver implements AutoCloseable {
             }
             return new DataTableModel(columns, data);
         }
+    }
+
+    private void setUrl() {
+        // Currently, only sqlite is supported
+        url = "jdbc:sqlite:%s";
     }
 
     @Override

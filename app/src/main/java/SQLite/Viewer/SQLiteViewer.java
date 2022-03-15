@@ -16,9 +16,9 @@ public class SQLiteViewer extends JFrame {
     public SQLiteViewer() {
         // Basic window settings
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(595, 700);
+        setSize(540, 700);
         setLayout(new BorderLayout());
-        setResizable(true);
+        setResizable(false);
         setLocationRelativeTo(null);
         setTitle("SQLite Viewer");
         // Initialize main window components
@@ -41,8 +41,8 @@ public class SQLiteViewer extends JFrame {
 
         JTextArea queryTextArea = new JTextArea();
         queryTextArea.setName("QueryTextArea");
-        queryTextArea.setRows(5);
-        queryTextArea.setColumns(40);
+        queryTextArea.setRows(8);
+        queryTextArea.setColumns(35);
         queryTextArea.setEnabled(false);
         JScrollPane queryTextScroll = new JScrollPane(queryTextArea);
 
@@ -70,9 +70,7 @@ public class SQLiteViewer extends JFrame {
         JMenuItem quitMenuItem = new JMenuItem("Quit");
         quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-        quitMenuItem.addActionListener(actionEvent -> {
-            System.exit(0);
-        });
+        quitMenuItem.addActionListener(actionEvent -> System.exit(0));
         quitMenuItem.setName("MenuExit");
 
         // Add file menu components
@@ -83,7 +81,8 @@ public class SQLiteViewer extends JFrame {
         // SQL selection menu
         JMenu sqlMenu = new JMenu("Select");
 
-        JMenuItem sqliteMenuItem = new JMenuItem("SQLite");
+        JCheckBoxMenuItem sqliteMenuItem = new JCheckBoxMenuItem("SQLite");
+        sqliteMenuItem.setState(true);
 
         sqlMenu.add(sqliteMenuItem);
 
@@ -164,9 +163,8 @@ public class SQLiteViewer extends JFrame {
                 );
             }
         });
-        tablesComboBox.addItemListener(actionEvent -> {
-            queryTextArea.setText(String.format(Driver.SQL_ALL_ROWS, actionEvent.getItem().toString()));
-        });
+        tablesComboBox.addItemListener(actionEvent ->
+                queryTextArea.setText(String.format(Driver.SQL_ALL_ROWS, actionEvent.getItem().toString())));
         executeButton.addActionListener(actionEvent -> {
             try (Driver driver = new Driver(fileNameTextField.getText())) {
                 DataTableModel tableModel = driver.runQuery(
