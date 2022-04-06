@@ -3,6 +3,8 @@
 
 # Ignore Gradle build output directory
 build
+/out/
+/app/out/
 
 # Ignore local editor settings
 .idea
