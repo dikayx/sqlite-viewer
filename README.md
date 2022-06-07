@@ -5,8 +5,8 @@ I added some neat features such as file selection and named borders around the s
 ![Screenshot of the text editor](./app/res/screenshot-viewer.png)
 
 ## Install
-- Download the .jar file (requires JVM) _or_ binary for your system
-- Alternatively you can download the source code and compile it yourself
+- Download the .jar file (requires JVM) _or_ 
+- Download the source code and compile it yourself
 
 ## How to use
 - Load a *.db file from disk from the menu
