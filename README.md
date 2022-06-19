@@ -20,6 +20,3 @@ _To get started you can download a sample file from sqlitetutorial.net [here](ht
 - Java
 - Gradle
 - SQLite
-
-## Roadmap
-I plan on adding support for more SQL-flavours such as MySQL & MSSQL in the future.
