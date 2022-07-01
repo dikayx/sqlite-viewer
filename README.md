@@ -16,6 +16,6 @@ A GUI application for viewing and editing SQLite databases. The idea came from a
 _To get started you can download a sample file from sqlitetutorial.net [here](https://www.sqlitetutorial.net/sqlite-sample-database/)._
 
 ## Technologies
-- Java
-- Gradle
-- SQLite
+- Java 11
+- Gradle 7.4.1
+- SQLite 3
