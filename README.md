@@ -1,6 +1,5 @@
 # Java SQLite Viewer
-A GUI application to view and edit SQLite databases. Based on an intermediate swing project,
-I added some neat features such as file selection and named borders around the sections.
+A GUI application for viewing and editing SQLite databases. The idea came from a [JetBrains Academy](https://hyperskill.org/projects/171) project, which I further improved by updating the overall design and adding nice features like a file selection menu.
 
 ![Screenshot of the text editor](./app/res/screenshot-viewer.png)
 
