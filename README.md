@@ -1,19 +1,39 @@
-# Java SQLite Viewer
-A GUI application for viewing and editing SQLite databases.
+# SQLite Viewer
+A desktop application to view and edit SQLite databases. It is written in Java and uses the SQLite JDBC driver.
+
+[![Java 11](https://img.shields.io/badge/Java-11-blue.svg)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+[![SQLite 3](https://img.shields.io/badge/SQLite-3-blue.svg)](https://www.sqlite.org/index.html)
+[![MIT license](https://img.shields.io/github/license/dan-koller/sqlite-viewer.svg)](LICENSE)
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 
 ![Screenshot of the text editor](./app/res/screenshot-viewer.png)
 
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
+
+## Requirements
+
+- JRE 11 or higher to run the application
+- JDK 11 or higher to compile the application
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
+
 ## Install
-- Download the .jar file (requires JVM) _or_ 
-- Download the source code and compile it yourself
+- [Download](https://github.com/dan-koller/sqlite-viewer/releases/tag/v1.0.0) the .jar file from the release section _or_ 
+- [Clone](https://github.com/dan-koller/sqlite-viewer) this repository and compile it yourself
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 
 ## How to use
-- Load a *.db file from disk from the menu
-- Open it (connect)
+- Load a Sqlite `*.db` file from disk from the menu
+- Open it by clicking `Connect`
 - Select the table you want to edit or view
+- Enter a SQL query in the text area and click `Execute` to run it
 - See the result in the area below
 
 _To get started you can download a sample file from sqlitetutorial.net [here](https://www.sqlitetutorial.net/sqlite-sample-database/)._
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 
 ## Technologies
 - Java 11
