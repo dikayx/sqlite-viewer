@@ -16,7 +16,7 @@ public class SQLiteViewer extends JFrame {
     public SQLiteViewer() {
         // Basic window settings
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(540, 700);
+        setSize(550, 700);
         setLayout(new BorderLayout());
         setResizable(false);
         setLocationRelativeTo(null);
@@ -33,7 +33,7 @@ public class SQLiteViewer extends JFrame {
         fileNameTextField.setName("FileNameTextField");
         fileNameTextField.setColumns(35);
 
-        JButton openFileButton = new JButton("Open");
+        JButton openFileButton = new JButton("Connect");
         openFileButton.setName("OpenFileButton");
 
         JComboBox<String> tablesComboBox = new JComboBox<>();
@@ -96,8 +96,7 @@ public class SQLiteViewer extends JFrame {
 
         JPanel selectionPanel = new JPanel(new GridLayout(2, 1));
 
-        JPanel selectFilePanel = new JPanel();
-        selectFilePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        JPanel selectFilePanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         selectFilePanel.add(new JLabel("Locate the SQLite *.db file:"));
         selectFilePanel.add(fileNameTextField);
         selectFilePanel.add(openFileButton);
