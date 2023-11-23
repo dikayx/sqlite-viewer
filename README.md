@@ -19,7 +19,7 @@ A desktop application to view and edit SQLite databases. It is written in Java a
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 
 ## Install
-- [Download](https://github.com/dan-koller/sqlite-viewer/releases/tag/v1.0.0) the .jar file from the release section _or_ 
+- [Download](https://github.com/dan-koller/sqlite-viewer/releases/tag/v1.1.0) the .jar file from the release section _or_ 
 - [Clone](https://github.com/dan-koller/sqlite-viewer) this repository and compile it yourself
 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
