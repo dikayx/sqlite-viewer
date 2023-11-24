@@ -24,10 +24,24 @@ dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
 
     // SQLite connector
-    implementation 'org.xerial:sqlite-jdbc:3.34.0'
+    implementation 'org.xerial:sqlite-jdbc:3.42.0.0'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'SQLite.Viewer.App'
+    mainClass = 'SQLite.Viewer.ApplicationRunner'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'SQLite.Viewer.ApplicationRunner',
+                'Class-Path': configurations.runtimeClasspath.collect { "libs/$it.name" }.join(' ')
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
