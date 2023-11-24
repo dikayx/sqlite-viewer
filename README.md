@@ -21,7 +21,7 @@ A desktop application to view and edit sqlite databases. It is written in Java a
 
 ## Install
 
-- [Download](https://github.com/dan-koller/sqlite-viewer/releases/tag/v1.2.0) the .jar file from the release section
+- [Download](https://github.com/dan-koller/sqlite-viewer/releases/tag/v1.2.1) the .jar file from the release section
   _or_
 - [Clone](https://github.com/dan-koller/sqlite-viewer) this repository and compile it yourself using `./gradlew build`
 
