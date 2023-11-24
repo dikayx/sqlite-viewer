@@ -19,15 +19,20 @@ public class Driver implements AutoCloseable {
             "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
 
     public Driver(String fileName) throws SQLException {
-        setUrl();
         connect(fileName);
     }
 
     // Connect to a selected database
-    protected void connect(String fileName) throws SQLException {
+    private void connect(String fileName) throws SQLException {
+        setUrl(fileName);
         SQLiteDataSource dataSource = new SQLiteDataSource();
-        dataSource.setUrl(String.format(url, fileName));
+        dataSource.setUrl(url);
         connection = dataSource.getConnection();
+    }
+
+    private void setUrl(String fileName) {
+        // Currently, only sqlite is supported
+        url = "jdbc:sqlite:" + fileName;
     }
 
     // Retrieve all tables of a specific database
@@ -66,11 +71,6 @@ public class Driver implements AutoCloseable {
             }
             return new DataTableModel(columns, data);
         }
-    }
-
-    private void setUrl() {
-        // Currently, only sqlite is supported
-        url = "jdbc:sqlite:%s";
     }
 
     @Override

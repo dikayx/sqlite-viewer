@@ -10,17 +10,20 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class SQLiteViewer extends JFrame {
-
-    private String fileName;
-
     public SQLiteViewer() {
         // Basic window settings
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(550, 700);
+        setSize(525, 700);
         setLayout(new BorderLayout());
         setResizable(false);
         setLocationRelativeTo(null);
         setTitle("SQLite Viewer");
+        // Same look and feel for all operating systems (using Nimbus)
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            showDialogPane("UI error", e.getMessage());
+        }
         // Initialize main window components
         initComponents();
         // Render window content
@@ -31,10 +34,10 @@ public class SQLiteViewer extends JFrame {
         // Components
         JTextField fileNameTextField = new JTextField();
         fileNameTextField.setName("FileNameTextField");
-        fileNameTextField.setColumns(35);
+        fileNameTextField.setColumns(36);
 
-        JButton openFileButton = new JButton("Connect");
-        openFileButton.setName("OpenFileButton");
+        JButton connectDbButton = new JButton("Connect");
+        connectDbButton.setName("ConnectDbButton");
 
         JComboBox<String> tablesComboBox = new JComboBox<>();
         tablesComboBox.setName("TablesComboBox");
@@ -99,7 +102,7 @@ public class SQLiteViewer extends JFrame {
         JPanel selectFilePanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         selectFilePanel.add(new JLabel("Locate the SQLite *.db file:"));
         selectFilePanel.add(fileNameTextField);
-        selectFilePanel.add(openFileButton);
+        selectFilePanel.add(connectDbButton);
         selectFilePanel.setBorder(BorderFactory.createTitledBorder("Select file"));
 
         JPanel selectTablePanel = new JPanel(new GridLayout(2, 0));
@@ -132,14 +135,13 @@ public class SQLiteViewer extends JFrame {
             JFileChooser fileChooser = new JFileChooser();
             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 fileNameTextField.setText(""); // Clear text
-                fileName = fileChooser.getSelectedFile().toString();
                 fileNameTextField.setText(fileChooser.getSelectedFile().toString());
             }
         });
-        openFileButton.addActionListener(actionEvent -> {
+        connectDbButton.addActionListener(actionEvent -> {
             Path filePath = Paths.get(fileNameTextField.getText());
             if (!Objects.equals(fileNameTextField.getText(), "") && Files.exists(filePath)) {
-                try (Driver driver = new Driver(fileName)) {
+                try (Driver driver = new Driver(filePath.toAbsolutePath().toString())) {
                     tablesComboBox.removeAllItems();
                     driver.getAllTables().forEach(tablesComboBox::addItem);
                     queryTextArea.setText(String.format(Driver.SQL_ALL_ROWS, tablesComboBox.getSelectedItem()));
@@ -147,19 +149,14 @@ public class SQLiteViewer extends JFrame {
                     queryTextArea.setEnabled(true);
                     executeButton.setEnabled(true);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    showDialogPane("SQL connection error", e.getMessage());
                 }
             } else {
                 tablesComboBox.removeAllItems();
                 queryTextArea.setText(null);
                 queryTextArea.setEnabled(false);
                 executeButton.setEnabled(false);
-                JOptionPane.showMessageDialog(
-                        new Frame(),
-                        "File doesn't exist!",
-                        "File error",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                showDialogPane("File error", "File not found");
             }
         });
         tablesComboBox.addItemListener(actionEvent ->
@@ -172,15 +169,19 @@ public class SQLiteViewer extends JFrame {
                 );
                 table.setModel(tableModel);
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(
-                        new Frame(),
-                        e.getMessage(),
-                        "SQL error",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                showDialogPane("SQL execution error", e.getMessage());
             } catch (Exception e) {
-                e.printStackTrace();
+                showDialogPane("Application error", e.getMessage());
             }
         });
+    }
+
+    private void showDialogPane(String title, String message) {
+        JOptionPane.showMessageDialog(
+                new Frame(),
+                message,
+                title,
+                JOptionPane.ERROR_MESSAGE
+        );
     }
 }
