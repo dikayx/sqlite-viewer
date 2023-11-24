@@ -49,7 +49,7 @@ public class Driver implements AutoCloseable {
     }
 
     // Execute specified query
-    protected DataTableModel runQuery(String query, String table) throws SQLException {
+    protected DataTableModel runQuery(String query) throws SQLException {
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
             ResultSetMetaData metaData = resultSet.getMetaData();

@@ -166,10 +166,7 @@ public class SQLiteViewer extends JFrame {
                 queryTextArea.setText(String.format(Driver.SQL_ALL_ROWS, actionEvent.getItem().toString())));
         executeButton.addActionListener(actionEvent -> {
             try (Driver driver = new Driver(fileNameTextField.getText())) {
-                DataTableModel tableModel = driver.runQuery(
-                        queryTextArea.getText(),
-                        (String) tablesComboBox.getSelectedItem()
-                );
+                DataTableModel tableModel = driver.runQuery(queryTextArea.getText());
                 table.setModel(tableModel);
             } catch (SQLException e) {
                 showDialogPane("SQL execution error", e.getMessage());
