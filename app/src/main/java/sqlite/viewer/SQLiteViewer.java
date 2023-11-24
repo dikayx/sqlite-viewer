@@ -1,4 +1,4 @@
-package SQLite.Viewer;
+package sqlite.viewer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +12,15 @@ import java.util.Objects;
 public class SQLiteViewer extends JFrame {
     public SQLiteViewer() {
         // Basic window settings
+        String osName = System.getProperty("os.name").toLowerCase();
+        int width = osName.contains("win") ? 540 : 525;
+        int height = 700;
+        setSize(width, height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(525, 700);
         setLayout(new BorderLayout());
-        setResizable(false);
         setLocationRelativeTo(null);
         setTitle("SQLite Viewer");
+        setResizable(false);
         // Same look and feel for all operating systems (using Nimbus)
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -45,7 +48,7 @@ public class SQLiteViewer extends JFrame {
         JTextArea queryTextArea = new JTextArea();
         queryTextArea.setName("QueryTextArea");
         queryTextArea.setRows(8);
-        queryTextArea.setColumns(35);
+        queryTextArea.setColumns(36);
         queryTextArea.setEnabled(false);
         JScrollPane queryTextScroll = new JScrollPane(queryTextArea);
 
@@ -84,7 +87,7 @@ public class SQLiteViewer extends JFrame {
         // SQL selection menu
         JMenu sqlMenu = new JMenu("Select");
 
-        JCheckBoxMenuItem sqliteMenuItem = new JCheckBoxMenuItem("SQLite");
+        JCheckBoxMenuItem sqliteMenuItem = new JCheckBoxMenuItem("sqlite");
         sqliteMenuItem.setState(true);
 
         sqlMenu.add(sqliteMenuItem);
