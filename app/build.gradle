@@ -29,13 +29,13 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'SQLite.Viewer.ApplicationRunner'
+    mainClass = 'sqlite.viewer.ApplicationRunner'
 }
 
 jar {
     manifest {
         attributes(
-                'Main-Class': 'SQLite.Viewer.ApplicationRunner',
+                'Main-Class': 'sqlite.viewer.ApplicationRunner',
                 'Class-Path': configurations.runtimeClasspath.collect { "libs/$it.name" }.join(' ')
         )
     }

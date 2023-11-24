@@ -1,9 +1,9 @@
-# SQLite Viewer
+# sqlite Viewer
 
-A desktop application to view and edit SQLite databases. It is written in Java and uses the SQLite JDBC driver.
+A desktop application to view and edit sqlite databases. It is written in Java and uses the sqlite JDBC driver.
 
 [![Java 11](https://img.shields.io/badge/Java-11-blue.svg)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-[![SQLite 3](https://img.shields.io/badge/SQLite-3-blue.svg)](https://www.sqlite.org/index.html)
+[![sqlite 3](https://img.shields.io/badge/SQLite-3-blue.svg)](https://www.sqlite.org/index.html)
 [![MIT license](https://img.shields.io/github/license/dan-koller/sqlite-viewer.svg)](LICENSE)
 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
@@ -54,7 +54,7 @@ when double-clicking a jar file._
 
 - Java 11
 - Gradle 7.4.1
-- SQLite 3
+- sqlite 3
 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 

@@ -1,4 +1,4 @@
-package SQLite.Viewer;
+package sqlite.viewer;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.Map;

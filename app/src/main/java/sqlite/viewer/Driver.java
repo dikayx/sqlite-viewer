@@ -1,4 +1,4 @@
-package SQLite.Viewer;
+package sqlite.viewer;
 
 import org.sqlite.SQLiteDataSource;
 
