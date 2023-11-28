@@ -1,4 +1,4 @@
-# sqlite Viewer
+# Sqlite Viewer
 
 A desktop application to view and edit sqlite databases. It is written in Java and uses the sqlite JDBC driver.
 
@@ -54,7 +54,7 @@ when double-clicking a jar file._
 
 - Java 11
 - Gradle 7.4.1
-- sqlite 3
+- Sqlite 3
 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png">
 
