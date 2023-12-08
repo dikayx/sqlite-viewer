@@ -25,7 +25,7 @@ public class SQLiteViewer extends JFrame {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
-            showDialogPane("UI error", e.getMessage());
+            showErrorDialog("UI error", e.getMessage());
         }
         // Initialize main window components
         initComponents();
@@ -152,14 +152,14 @@ public class SQLiteViewer extends JFrame {
                     queryTextArea.setEnabled(true);
                     executeButton.setEnabled(true);
                 } catch (Exception e) {
-                    showDialogPane("SQL connection error", e.getMessage());
+                    showErrorDialog("SQL connection error", e.getMessage());
                 }
             } else {
                 tablesComboBox.removeAllItems();
                 queryTextArea.setText(null);
                 queryTextArea.setEnabled(false);
                 executeButton.setEnabled(false);
-                showDialogPane("File error", "File not found");
+                showErrorDialog("File error", "File not found");
             }
         });
         tablesComboBox.addItemListener(actionEvent ->
@@ -169,14 +169,14 @@ public class SQLiteViewer extends JFrame {
                 DataTableModel tableModel = driver.runQuery(queryTextArea.getText());
                 table.setModel(tableModel);
             } catch (SQLException e) {
-                showDialogPane("SQL execution error", e.getMessage());
+                showErrorDialog("SQL execution error", e.getMessage());
             } catch (Exception e) {
-                showDialogPane("Application error", e.getMessage());
+                showErrorDialog("Application error", e.getMessage());
             }
         });
     }
 
-    private void showDialogPane(String title, String message) {
+    private void showErrorDialog(String title, String message) {
         JOptionPane.showMessageDialog(
                 new Frame(),
                 message,
